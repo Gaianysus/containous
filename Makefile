@@ -1,9 +1,9 @@
-FRAMES:="-F PNG --render-output `pwd`/output_##### --render-frame 1 --render-frame 2 --render-frame 3"
-ANIMATIONS:="-F AVIJPEG --render-output `pwd`/output_avi_##### --frame-start 3 --frame-end 63 --render-anim"
-BLENDER:="blender"
-PRE_CMD:="primusrun"
+FRAMES:=-F PNG --render-output `pwd`/output_ --render-frame 1 --render-frame 2 --render-frame 3
+ANIMATIONS:=-F AVIJPEG --render-output `pwd`/output_avi_ --frame-start 3 --frame-end 63 --render-anim
+BLENDER:=blender
+PRE_CMD:=primusrun
 # zero threads means proc count
-POST_OPTS:="--threads 0"
+POST_OPTS:=--threads 0
 TIME:=/usr/bin/time -v
 CMD:=$(PRE_CMD) $(BLENDER) $(POST_OPTS)
 SHELL:=/bin/bash
@@ -31,5 +31,4 @@ beep:
 	$(BEEP)
 
 echo:
-	echo $(TIME) $(CMD) -b $(BLENDFILE) $(FRAMES) $(ANIMATIONS)
-	$(BEEP)
+	-@echo $(TIME) $(CMD) --background $(BLENDFILE) $(FRAMES) $(ANIMATIONS)
