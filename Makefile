@@ -10,7 +10,7 @@ SHELL:=/bin/bash
 BLENDFILE=`pwd`/gaia8-container.blend
 BEEP:=vlc /mnt/unreal/2017-02-16-Snowfootage/bluedanube-synthy.wav
 
-all: frames animations
+all: both
 
 frames:
 	$(TIME) $(CMD) --background $(BLENDFILE) $(FRAMES)
