@@ -1,3 +1,4 @@
+FRAMENUMBERS:=(1 2 3 4)
 FRAMES:=-F PNG --render-output `pwd`/output_ --render-frame 1 --render-frame 2 --render-frame 3
 ANIMATIONS:=-F AVIJPEG --render-output `pwd`/output_avi_ --frame-start 3 --frame-end 63 --render-anim
 BLENDER:=blender
@@ -31,4 +32,13 @@ beep:
 	$(BEEP)
 
 echo:
+	#local_frames=$(FRAMENUMBERS)
+	local_frames=(1 2 3 4)
+	farm_hosts=(web03 web04 web05 web06 web07)
+	for i in ${farm_hosts[@]}; do echo farm ${i}; done
 	-@echo $(TIME) $(CMD) --background $(BLENDFILE) $(FRAMES) $(ANIMATIONS)
+	for i in ${local_frames[@]}; do echo NUMBER ${i}; done
+
+show:
+	vlc -f -L output_avi*.avi
+
